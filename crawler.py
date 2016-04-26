@@ -4,22 +4,22 @@ import string
 import csv
 
 # ASCII charecter uppercase list
-charecters = list(string.ascii_uppercase)
+charecter = list(string.ascii_uppercase)
 sum = 0
 
 # Create an object of file
-fileObj = open('squarepharma.csv', "w") # File open
+file_obj = open('squarepharma.csv', "w") # File open
 # Write the Pharmaceuticals name
-fileObj.write("Square Pharmaceuticals Ltd.\n\n")
+file_obj.write("Square Pharmaceuticals Ltd.\n\n")
 # Write medicine name header
-fileObj.write("Medicine Name,")
+file_obj.write("Medicine Name,")
 # Write Company name header
-fileObj.write("Company Name\n")
+file_obj.write("Company Name\n")
 
 print("Company ----- Medicine name --------------- Group")
 print("=============================================================================")
 
-for char in charecters:
+for char in charecter:
 	# URL with trade and char query params
 	url = "http://www.squarepharma.com.bd/products-by-tradename.php?type=trade&char="+char
 	# Get the requested URL
@@ -35,8 +35,8 @@ for char in charecters:
 		print("=============================================================================")
 
 		# Writing the medicine information into CSV file
-		fileObj.write(item.contents[2].text.encode("utf-8")+',')
-		fileObj.write(item.contents[4].text.encode("utf-8")+"\n")
+		file_obj.write(item.contents[2].text.encode("utf-8")+',')
+		file_obj.write(item.contents[4].text.encode("utf-8")+"\n")
 
-fileObj.close() # File close
+file_obj.close() # File close
 print("Total medicines :  {0}".format(sum)) # Print the total number of medicines
